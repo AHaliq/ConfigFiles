@@ -32,6 +32,10 @@ set ruler
 " Navigation
 map [-    :tabp<CR>
 map [=    :tabn<CR>
+map ]<Left>   <C-w><Left>
+map ]<Right>  <C-w><Right>
+map ]<Up>     <C-w><Up>
+map ]<Down>   <C-w><Down>
 
 " Panels
 map ]-    :new<CR>
