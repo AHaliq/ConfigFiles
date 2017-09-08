@@ -39,14 +39,18 @@ map ,<Up>     <C-w><Up>
 map ,<Down>   <C-w><Down>
 
 " Panels
-map <k :new<CR>
-map <l :vnew<CR>
-map <m :tabnew<CR>
+map <k       :new<CR>
+map <l       :vnew<CR>
+map <m       :tabnew<CR>
+map <<LEFT>  :vertical res -
+map <<RIGHT> :vertical res +
+map <<UP>    :res +
+map <<DOWN>  :res -
 
 " Open Plugins
 map ,m :NERDTreeToggle<CR>
 map ,k :Tagbar<CR>
-map ,l :Hoogle
+map ,l :Hoogle<Space>
 map ,. :Magit<CR>
 map ,n :Tabularize<Space>/
 map ,N :TabFirst<Space>
@@ -121,3 +125,4 @@ let g:tagbar_type_haskell = {
 
 " Pathogen
 execute pathogen#infect()
+Helptags
