@@ -15,6 +15,7 @@ if has("autocmd")
 endif
 
 " VIM specific
+set backspace=indent,eol,start
 set showcmd     " Show (partial) command in status line
 set showmatch   " Show matching brackets
 set ignorecase  " Do case insensitive matching
