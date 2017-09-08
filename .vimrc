@@ -30,47 +30,59 @@ set rnu
 set ruler
 
 " Navigation
-map [-    :tabp<CR>
-map [=    :tabn<CR>
-map ]<Left>   <C-w><Left>
-map ]<Right>  <C-w><Right>
-map ]<Up>     <C-w><Up>
-map ]<Down>   <C-w><Down>
+map ,-        :tabp<CR>
+map ,=        :tabn<CR>
+map ,<Left>   <C-w><Left>
+map ,<Right>  <C-w><Right>
+map ,<Up>     <C-w><Up>
+map ,<Down>   <C-w><Down>
 
 " Panels
-map ]-    :new<CR>
-map ]=    :vnew<CR>
-map ]p    :tabnew<CR>
+map <k :new<CR>
+map <l :vnew<CR>
+map <m :tabnew<CR>
 
 " Open Plugins
-map ,m    :NERDTreeToggle<CR>
-map ,k    :Tagbar<CR>
-map ,l    :Hoogle 
-map ,.    :Magit<CR>
+map ,m :NERDTreeToggle<CR>
+map ,k :Tagbar<CR>
+map ,l :Hoogle
+map ,. :Magit<CR>
+map ,n :Tabularize<Space>/
+map ,N :TabFirst<Space>
+map ,j :SyntasticCheck<CR>
 
 " Close panes
-map .l    :HoogleClose<CR>
-map ..    :q<CR>
-map .w    :w<CR>:q<CR>
+map .l :HoogleClose<CR>
+map .. :q<CR>
+map .w :w<CR>:q<CR>
 
 " Theme
-hi Normal ctermbg=none
-hi VertSplit cterm=none ctermfg=black
-hi StatusLineNC cterm=none ctermfg=black
-hi StatusLine ctermbg=lightblue ctermfg=black
-hi TabLineFill cterm=none ctermfg=lightblue
-hi TabLineSel ctermfg=magenta ctermbg=black
-hi TabLine cterm=none ctermbg=black
+hi Normal       ctermbg=none
+hi VertSplit    cterm=none        ctermfg=black
+hi StatusLineNC cterm=none        ctermfg=black
+hi StatusLine   ctermbg=lightblue ctermfg=black
+hi TabLineFill  cterm=none        ctermfg=lightblue
+hi TabLineSel   ctermfg=magenta   ctermbg=black
+hi TabLine      cterm=none        ctermbg=black
 set fillchars+=vert:│
 
+" completion
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+" Tabular macros
+command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[^' . escape(<q-args>, '\^$.[?*~') . ']*\zs' . escape(<q-args>, '\^$.[?*~')
+
 " Syntastic
-" set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+autocmd VimEnter * SyntasticToggleMode
 
 " Tagbar & Hasktags
 let g:tagbar_type_haskell = {
