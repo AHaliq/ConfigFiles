@@ -2,6 +2,7 @@ scriptencoding utf-8
 set encoding=utf-8
 
 " Enable syntax highlighting if available
+filetype on
 if has("syntax")
   syntax on
 endif
@@ -82,7 +83,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-autocmd VimEnter * SyntasticToggleMode
+
+"autocmd VimEnter * SyntasticToggleMode
 
 " Tagbar & Hasktags
 let g:tagbar_type_haskell = {
