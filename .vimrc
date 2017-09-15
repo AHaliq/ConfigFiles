@@ -2,7 +2,6 @@ scriptencoding utf-8
 set encoding=utf-8
 
 " Enable syntax highlighting if available
-filetype on
 if has("syntax")
   syntax on
 endif
@@ -12,6 +11,7 @@ endif
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   filetype plugin indent on
+  set omnifunc=syntaxcomplete#Complete
 endif
 
 " VIM specific
@@ -26,10 +26,6 @@ set ttymouse=xterm2
 
 " Spaces for tab key
 set tabstop=2 shiftwidth=2 expandtab
-
-" Relative Line Numbers
-set rnu
-set ruler
 
 " Navigation
 map ,-        :tabp<CR>
@@ -64,13 +60,23 @@ map .w :w<CR>:q<CR>
 
 " Theme
 hi Normal       ctermbg=none
-hi VertSplit    cterm=none        ctermfg=black
-hi StatusLineNC cterm=none        ctermfg=black
-hi StatusLine   ctermbg=lightblue ctermfg=black
-hi TabLineFill  cterm=none        ctermfg=lightblue
-hi TabLineSel   ctermfg=magenta   ctermbg=black
-hi TabLine      cterm=none        ctermbg=black
-set fillchars+=vert:│
+hi VertSplit    cterm=none    ctermbg=white
+hi StatusLineNC cterm=none    ctermfg=white ctermbg=white
+hi StatusLine   ctermfg=white ctermbg=white
+hi TabLineFill  cterm=none
+hi TabLineSel   ctermfg=white ctermbg=black
+hi TabLine      ctermfg=white ctermbg=white
+hi LineNr       ctermfg=white
+hi CursorLineNr ctermbg=white ctermfg=white
+hi NonText      ctermfg=white
+hi MatchParen   ctermbg=white ctermfg=white
+hi Search       ctermbg=black ctermfg=white
+
+"set ruler
+set hlsearch
+autocmd InsertEnter * :let @/=""
+autocmd InsertLeave * :let @/=""
+set fillchars+=vert:\ 
 
 " completion
 filetype plugin on
@@ -80,9 +86,9 @@ set omnifunc=syntaxcomplete#Complete
 command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[^' . escape(<q-args>, '\^$.[?*~') . ']*\zs' . escape(<q-args>, '\^$.[?*~')
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
