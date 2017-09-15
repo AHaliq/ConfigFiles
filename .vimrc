@@ -135,5 +135,5 @@ if has('langmap') && exists('+langremap')
 endif
 
 " PERSONAL EXTENSION
-source ./.extend.vim
+source ~/.extend.vim
 " ==================
