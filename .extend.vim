@@ -1,6 +1,6 @@
 " Personal configuration extended from default vimrc file.
 " 
-" Last change:	2017 Sep 15
+" Last change:	2018 Mar 14
 
 " Plugins
 call plug#begin('~/.vim/bundle/')
@@ -115,8 +115,8 @@ hi VertSplit    cterm=none    ctermfg=black   ctermbg=none
 hi StatusLineNC cterm=none    ctermfg=black   ctermbg=none
 hi StatusLine   cterm=bold    ctermfg=white   ctermbg=black
 hi TabLineFill  cterm=none
-hi TabLineSel   ctermfg=white ctermbg=black
-hi TabLine      ctermfg=white ctermbg=white
+hi TabLineSel   cterm=bold    ctermfg=white ctermbg=black
+hi TabLine      cterm=bold    ctermfg=black ctermbg=none
 hi Title        ctermfg=white
 hi LineNr       ctermfg=white
 hi CursorLineNr ctermbg=white ctermfg=white
