@@ -51,11 +51,11 @@ noremap zH :leftabove vnew<CR>
 noremap zJ :rightbelow new<CR>
 noremap zK :leftabove new<CR>
 noremap zL :rightbelow vnew<CR>
-" Normal pane management; swap z<C-x>
-noremap z<C-h> <C-w>H
-noremap z<C-j> <C-w>J
-noremap z<C-k> <C-w>K
-noremap z<C-l> <C-w>L
+" Normal pane management; resize z<C-x>
+noremap z<C-h> :vertical resize -5<CR>
+noremap z<C-j> :resize -5<CR>
+noremap z<C-k> :resize +5<CR>
+noremap z<C-l> :vertical resize +5<CR>
 " Normal tab management; Zx
 noremap ZZ :tabe<CR>
 noremap Zh :tabfirst<CR>
@@ -81,11 +81,11 @@ let g:signify_vcs_list = ['git']
 let g:signify_realtime = 1
 set updatetime=100
 "  theme
-hi SignifySignAdd             cterm=bold ctermbg=white ctermfg=green
-hi SignifySignChange          cterm=bold ctermbg=white ctermfg=yellow
-hi SignifySignDelete          cterm=bold ctermbg=white ctermfg=red
-hi SignifySignChangeDelete    cterm=bold ctermbg=white ctermfg=red
-hi SignifySignDeleteFirstLine cterm=bold ctermbg=white ctermfg=red
+hi SignifySignAdd             cterm=bold ctermbg=green  ctermfg=black
+hi SignifySignChange          cterm=bold ctermbg=yellow ctermfg=black
+hi SignifySignDelete          cterm=bold ctermbg=red    ctermfg=black
+hi SignifySignChangeDelete    cterm=bold ctermbg=red    ctermfg=black
+hi SignifySignDeleteFirstLine cterm=bold ctermbg=red    ctermfg=black
 
 " Plugins; netrw
 "  configure
@@ -98,6 +98,9 @@ hi netrwTreeBar ctermfg=white
 noremap .2 :topleft 30vnew<CR>:e .<CR>
 
 " Plugins; sneak
+" start search  s{char}{char}
+" next          ;
+" prev          ,
 "  configure
 hi! link Sneak Search
 
@@ -106,11 +109,11 @@ noremap t :Tabularize /
 
 " Theme
 hi NonText      ctermfg=white
-hi SignColumn   ctermbg=white
+hi SignColumn   ctermbg=none
 hi Normal       ctermbg=none
-hi VertSplit    cterm=none    ctermbg=white
-hi StatusLineNC cterm=none    ctermfg=white   ctermbg=white
-hi StatusLine   ctermfg=white ctermbg=white
+hi VertSplit    cterm=none    ctermfg=black   ctermbg=none
+hi StatusLineNC cterm=none    ctermfg=black   ctermbg=none
+hi StatusLine   cterm=bold    ctermfg=white   ctermbg=black
 hi TabLineFill  cterm=none
 hi TabLineSel   ctermfg=white ctermbg=black
 hi TabLine      ctermfg=white ctermbg=white
@@ -118,7 +121,8 @@ hi Title        ctermfg=white
 hi LineNr       ctermfg=white
 hi CursorLineNr ctermbg=white ctermfg=white
 hi CursorLine   cterm=none    ctermbg=white
-hi NonText      ctermfg=white
+hi NonText      ctermfg=black
 hi MatchParen   ctermbg=none  cterm=underline
 hi Search       ctermbg=black ctermfg=white
-set fillchars+=vert:\ 
+set laststatus=2
+set fillchars+=vert:│
