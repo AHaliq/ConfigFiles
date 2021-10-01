@@ -8,6 +8,8 @@
 " Individual settings can be reverted with ":set option&".
 " Other commands can be reverted as mentioned below.
 
+source ~/.extend.vim
+
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -133,7 +135,3 @@ if has('langmap') && exists('+langremap')
   " compatible).
   set nolangremap
 endif
-
-" PERSONAL EXTENSION
-source ~/.extend.vim
-" ==================

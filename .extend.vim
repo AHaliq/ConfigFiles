@@ -1,14 +1,35 @@
 " Personal configuration extended from default vimrc file.
 " 
 " Last change:	2018 Mar 14
-
+let g:ale_disable_lsp = 1
 " Plugins
 call plug#begin('~/.vim/bundle/')
 Plug 'justinmk/vim-sneak'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'jremmen/vim-ripgrep'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'purescript-contrib/purescript-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
 call plug#end()
+
+" Coc and Ale
+let g:coc_disable_startup_warning = 1
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 " Configue
 " Tabs as 2 spaces
@@ -108,6 +129,19 @@ hi! link Sneak Search
 noremap t :Tabularize /
 
 " Theme
+syntax on
+set t_Co=256
+colorscheme onehalfdark
+set background=dark
+let g:lightline = {
+      \ 'colorscheme': 'onehalfdark',
+      \ }
+let g:tmuxline_theme = 'onehalfdark'
+" JS Template Syntax Highlighting
+hi link javaScriptTemplateDelim String
+hi link javaScriptTemplateVar Text
+hi link javaScriptTemplateString String
+
 hi NonText      ctermfg=white
 hi SignColumn   ctermbg=none
 hi Normal       ctermbg=none
@@ -119,7 +153,7 @@ hi TabLineSel   cterm=bold    ctermfg=white ctermbg=black
 hi TabLine      cterm=bold    ctermfg=black ctermbg=none
 hi Title        ctermfg=white
 hi LineNr       ctermfg=white
-hi CursorLineNr ctermbg=white ctermfg=white
+hi CursorLineNr ctermbg=white ctermfg=black
 hi CursorLine   cterm=none    ctermbg=white
 hi NonText      ctermfg=black
 hi MatchParen   ctermbg=none  cterm=underline
