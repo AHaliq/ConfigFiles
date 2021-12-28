@@ -31,6 +31,9 @@ inoremap <silent><expr> <Tab>
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
 
+" Tmuxline
+noremap <C-t> :Tmuxline lightline <CR>
+
 " Configue
 " Tabs as 2 spaces
 set tabstop=2 shiftwidth=2 expandtab

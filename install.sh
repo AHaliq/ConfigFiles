@@ -6,3 +6,4 @@ ln -s "$BASEDIR/.vimrc" ~/.vimrc
 ln -s "$BASEDIR/.extend.vim" ~/.extend.vim
 ln -s "$BASEDIR/.zshrc" ~/.zshrc
 ln -s "$BASEDIR/.tmux.conf" ~/.tmux.conf
+sh -c "$(curl -fsSL https://git.io/zinit-install)"
